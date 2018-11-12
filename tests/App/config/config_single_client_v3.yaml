@@ -1,0 +1,10 @@
+
+atol_client:
+    guzzle_client: app.guzzle.client
+    guzzle_client_options: []
+    base_url: 'http://test_url'
+    cash_register_group_code: 'test_group'
+    callback_url: null
+
+services:
+    test.atol_client.v3: '@atol_client.v3'

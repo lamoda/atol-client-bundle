@@ -1,0 +1,27 @@
+
+parameters:
+    kernel.secret: AtolClientSecret
+
+framework:
+    validation:
+        enabled: true
+        enable_annotations: true
+
+services:
+    _defaults:
+        public: true
+
+    app.guzzle.mock_handler:
+        class: \GuzzleHttp\Handler\MockHandler
+
+    app.guzzle.handler_stack:
+        class: \GuzzleHttp\HandlerStack
+        factory: '\GuzzleHttp\HandlerStack::create'
+        arguments:
+            - '@app.guzzle.mock_handler'
+
+    app.guzzle.client:
+        class: \GuzzleHttp\Client
+        arguments:
+            -
+                handler: '@app.guzzle.handler_stack'

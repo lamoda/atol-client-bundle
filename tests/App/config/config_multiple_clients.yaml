@@ -1,0 +1,30 @@
+
+atol_client:
+    clients:
+        default:
+            guzzle_client: app.guzzle.client
+            guzzle_client_options: []
+            base_url: 'http://test_url'
+            cash_register_group_code: 'test_group'
+            callback_url: null
+
+        second:
+            version: 3
+            guzzle_client: app.guzzle.client
+            guzzle_client_options: {'a': 'test'}
+            base_url: 'http://test_url2'
+            cash_register_group_code: 'test_group2'
+            callback_url: null
+
+        third:
+            version: 4
+            guzzle_client: app.guzzle.client
+            guzzle_client_options: {'a': 'test'}
+            base_url: 'http://test_url2'
+            cash_register_group_code: 'test_group2'
+            callback_url: null
+
+services:
+    test.atol_client.v3: '@atol_client.v3.default'
+    test.atol_client.v3.second: '@atol_client.v3.second'
+    test.atol_client.v4.third: '@atol_client.v4.third'

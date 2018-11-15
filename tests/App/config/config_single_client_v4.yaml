@@ -1,0 +1,10 @@
+
+atol_client:
+    version: 4
+    guzzle_client: app.guzzle.client
+    guzzle_client_options: []
+    base_url: 'http://test_url'
+    callback_url: null
+
+services:
+    test.atol_client.v4: '@atol_client.v4'

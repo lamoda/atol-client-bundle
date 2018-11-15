@@ -1,6 +1,11 @@
 # ATOL PHP Client bundle
 Bundle for https://github.com/lamoda/atol-client
 
+[![Build Status](https://travis-ci.org/lamoda/atol-client-bundle.svg?branch=master)](https://travis-ci.org/lamoda/atol-client-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/lamoda/atol-client-bundle/build-status/master)
+
 ## Installation
 
 Usage is as simple as 
@@ -28,7 +33,6 @@ Usage is as simple as
 	services:
 		guzzle:
 			class: \GuzzleHttp\Client
-
 	```
 4. Configure Symfony to enable `validator` and `enable_annotations`:
 	```yaml

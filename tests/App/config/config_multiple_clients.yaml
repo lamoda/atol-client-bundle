@@ -25,6 +25,12 @@ atol_client:
             callback_url: null
 
 services:
-    test.atol_client.v3: '@atol_client.v3.default'
-    test.atol_client.v3.second: '@atol_client.v3.second'
-    test.atol_client.v4.third: '@atol_client.v4.third'
+    test.atol_client.v3:
+        alias: 'atol_client.v3.default'
+        public: true
+    test.atol_client.v3.second:
+        alias: 'atol_client.v3.second'
+        public: true
+    test.atol_client.v4.third:
+        alias: 'atol_client.v4.third'
+        public: true

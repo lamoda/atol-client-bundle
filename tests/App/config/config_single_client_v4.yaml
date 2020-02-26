@@ -7,4 +7,6 @@ atol_client:
     callback_url: null
 
 services:
-    test.atol_client.v4: '@atol_client.v4'
+    test.atol_client.v4:
+        alias: 'atol_client.v4'
+        public: true

@@ -5,34 +5,25 @@ services:
   # JMS (de)serialze format: "atol_client".
   # $someValue <-> '"some_value"'.
   atol_client.serializer.visitor.deserialize.atol_client:
-    class: JMS\Serializer\JsonDeserializationVisitor
-    arguments: ['@atol_client.serializer.naming']
+    class: JMS\Serializer\Visitor\Factory\JsonDeserializationVisitorFactory
     tags: [{ name: 'jms_serializer.deserialization_visitor', format: 'atol_client' }]
 
   atol_client.serializer.visitor.serialize.atol_client:
-    class: JMS\Serializer\JsonSerializationVisitor
-    arguments: ['@atol_client.serializer.naming']
+    class: JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory
     tags: [{ name: 'jms_serializer.serialization_visitor', format: 'atol_client' }]
 
   # (De)serialization object <-> array.
   atol_client.serializer.visitor.serialize.array:
-    class: JMS\Serializer\JsonSerializationVisitor
-    arguments: ['@atol_client.serializer.naming']
+    class: JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory
     tags: [{ name: 'jms_serializer.serialization_visitor', format: 'atol_client' }]
 
   atol_client.serializer.visitor.deserialize.array:
-    class: JMS\Serializer\JsonDeserializationVisitor
-    arguments: ['@atol_client.serializer.naming']
+    class: JMS\Serializer\Visitor\Factory\JsonDeserializationVisitorFactory
     tags: [{ name: 'jms_serializer.deserialization_visitor', format: 'atol_client' }]
 
   atol_client.validator.attributes:
     class: Lamoda\AtolClient\V3\Validator\EmailOrPhoneValidator
     tags: [{ name: validator.constraint_validator }]
-
-  # $someValue <-> 'some_value':
-  atol_client.serializer.naming:
-      class: "%jms_serializer.serialized_name_annotation_strategy.class%"
-      arguments: ["@jms_serializer.camel_case_naming_strategy"]
 
   # Converts request and response from and to json.
   atol_client.object_converter:

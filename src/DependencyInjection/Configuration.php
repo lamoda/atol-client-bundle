@@ -10,9 +10,13 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
-
-        $root = $builder->root('atol_client');
+        if (method_exists(TreeBuilder::class, 'getRootNode')) {
+            $treeBuilder = new TreeBuilder('atol_client');
+            $root = $treeBuilder->getRootNode();
+        } else {
+            $treeBuilder = new TreeBuilder();
+            $root = $treeBuilder->root('atol_client');
+        }
 
         $root
             ->beforeNormalization()

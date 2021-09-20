@@ -24,6 +24,14 @@ atol_client:
             cash_register_group_code: 'test_group2'
             callback_url: null
 
+        fourth:
+            version: 5
+            guzzle_client: app.guzzle.client
+            guzzle_client_options: { 'a': 'test' }
+            base_url: 'http://test_url2'
+            cash_register_group_code: 'test_group2'
+            callback_url: null
+
 services:
     test.atol_client.v3:
         alias: 'atol_client.v3.default'
@@ -33,4 +41,7 @@ services:
         public: true
     test.atol_client.v4.third:
         alias: 'atol_client.v4.third'
+        public: true
+    test.atol_client.v5.fourth:
+        alias: 'atol_client.v5.fourth'
         public: true

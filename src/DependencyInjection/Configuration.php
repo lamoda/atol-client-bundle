@@ -26,7 +26,7 @@ final class Configuration implements ConfigurationInterface
                         ->beforeNormalization()
                             ->ifTrue(function ($v) {
                                 return isset($v['version'])
-                                    && $v['version'] === AtolClientBundle::API_CLIENT_VERSION_3
+                                    && AtolClientBundle::API_CLIENT_VERSION_3 === $v['version']
                                     && empty($v['cash_register_group_code']);
                             })
                             ->thenInvalid('cash_register_group_code is required for Atol Api Client v3')
@@ -37,6 +37,7 @@ final class Configuration implements ConfigurationInterface
                                 ->values([
                                     AtolClientBundle::API_CLIENT_VERSION_3,
                                     AtolClientBundle::API_CLIENT_VERSION_4,
+                                    AtolClientBundle::API_CLIENT_VERSION_5,
                                 ])
                                 ->defaultValue(AtolClientBundle::API_CLIENT_VERSION_3)
                             ->end()

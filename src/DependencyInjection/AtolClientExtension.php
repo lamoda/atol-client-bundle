@@ -48,6 +48,11 @@ final class AtolClientExtension extends Extension
             $container->setAlias('atol_client.v4', 'atol_client.v4.default');
             $container->setAlias(AtolApiV4::class, 'atol_client.v4.default');
         }
+
+        if ($container->hasDefinition('atol_client.v5.default')) {
+            $container->setAlias('atol_client.v5', 'atol_client.v5.default');
+            $container->setAlias(AtolApiV5::class, 'atol_client.v5.default');
+        }
     }
 
     private function createAtolClient(string $name, array $clientConfig, ContainerBuilder $container): void
@@ -58,6 +63,9 @@ final class AtolClientExtension extends Extension
                 break;
             case AtolClientBundle::API_CLIENT_VERSION_4:
                 $this->createAtolClientV4($name, $clientConfig, $container);
+                break;
+            case AtolClientBundle::API_CLIENT_VERSION_5:
+                $this->createAtolClientV5($name, $clientConfig, $container);
                 break;
             default:
                 throw new InvalidArgumentException('Wrong client version: ' . $clientConfig['version']);
@@ -91,6 +99,21 @@ final class AtolClientExtension extends Extension
         $definition->setPublic(false);
 
         $id = 'atol_client.v4.' . $name;
+
+        $container->setDefinition($id, $definition);
+    }
+
+    private function createAtolClientV5(string $name, array $clientConfig, ContainerBuilder $container): void
+    {
+        $definition = new Definition(AtolApiV5::class, [
+            new Reference('atol_client.object_converter'),
+            new Reference($clientConfig['guzzle_client']),
+            $clientConfig['guzzle_client_options'],
+            $clientConfig['base_url'],
+        ]);
+        $definition->setPublic(false);
+
+        $id = 'atol_client.v5.' . $name;
 
         $container->setDefinition($id, $definition);
     }

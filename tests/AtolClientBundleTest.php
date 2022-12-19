@@ -4,6 +4,7 @@ namespace Lamoda\AtolClientBundle\Tests;
 
 use Lamoda\AtolClient\V3\AtolApi as AtolApiV3;
 use Lamoda\AtolClient\V4\AtolApi as AtolApiV4;
+use Lamoda\AtolClient\V5\AtolApi as AtolApiV5;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class AtolClientBundleTest extends WebTestCase
@@ -40,11 +41,18 @@ final class AtolClientBundleTest extends WebTestCase
                 ],
             ],
             [
+                'single_client_v5',
+                [
+                    'test.atol_client.v5' => AtolApiV5::class,
+                ],
+            ],
+            [
                 'multiple_clients',
                 [
                     'test.atol_client.v3' => AtolApiV3::class,
                     'test.atol_client.v3.second' => AtolApiV3::class,
                     'test.atol_client.v4.third' => AtolApiV4::class,
+                    'test.atol_client.v5.fourth' => AtolApiV5::class,
                 ],
             ],
         ];

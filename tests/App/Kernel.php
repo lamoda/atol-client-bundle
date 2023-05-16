@@ -24,21 +24,21 @@ final class Kernel extends SymfonyKernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->rootDir . '/config/config.yaml');
-        $clientConfig = $this->rootDir . '/config/config_' . $this->environment . '.yaml';
+        $loader->load($this->getProjectDir() . '/tests/App/config/config.yaml');
+        $clientConfig = $this->getProjectDir() . '/tests/App/config/config_' . $this->environment . '.yaml';
         if (!file_exists($clientConfig)) {
-            $clientConfig = $this->rootDir . '/config/config_single_client.yaml';
+            $clientConfig = $this->getProjectDir() . '/tests/App/config/config_single_client.yaml';
         }
         $loader->load($clientConfig);
     }
 
     public function getCacheDir()
     {
-        return $this->rootDir . '/../../build/var/cache/' . $this->environment;
+        return $this->getProjectDir() . '/build/var/cache/' . $this->environment;
     }
 
     public function getLogDir()
     {
-        return $this->rootDir . '/../../build/var/logs/' . $this->environment;
+        return $this->getProjectDir() . '/build/var/logs/' . $this->environment;
     }
 }

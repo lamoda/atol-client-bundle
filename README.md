@@ -31,8 +31,8 @@ Usage is as simple as
 3. Configure Guzzle client in `services.yaml`, for example:
 	```yaml
 	services:
-		guzzle:
-			class: \GuzzleHttp\Client
+	    guzzle:
+	        class: \GuzzleHttp\Client
 	```
 4. Configure Symfony to enable `validator` and `enable_annotations`:
 	```yaml
